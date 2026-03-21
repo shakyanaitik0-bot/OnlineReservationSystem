@@ -33,7 +33,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 echo '--- Running SonarQube Scan ---'
-                sh '/usr/share/maven/bin/mvn sonar:sonar -Dsonar.projectKey=online-reservation-system -Dsonar.host.url=${SONAR_HOST} -Dsonar.login=admin -Dsonar.password=admin'
+                sh '/usr/share/maven/bin/mvn sonar:sonar -Dsonar.projectKey=online-reservation-system -Dsonar.host.url=http://host.docker.internal:9000 -Dsonar.login=admin -Dsonar.password=admin123'
             }
         }
 
