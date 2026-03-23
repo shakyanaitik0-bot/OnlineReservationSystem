@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'maven:3.9.6-eclipse-temurin-11'
+        }
+    }
 
     environment {
         DOCKER_IMAGE = "reservation-app"
@@ -8,19 +12,17 @@ pipeline {
 
     stages {
 
-        // ❌ REMOVE CLONE STAGE (Jenkins already does it)
-
         stage('Build') {
             steps {
                 echo '--- Building with Maven ---'
-                sh '/usr/share/maven/bin/mvn clean package -DskipTests'
+                sh 'mvn clean package -DskipTests'
             }
         }
 
         stage('Test') {
             steps {
                 echo '--- Running Unit Tests ---'
-                sh '/usr/share/maven/bin/mvn test'
+                sh 'mvn test'
             }
         }
 
