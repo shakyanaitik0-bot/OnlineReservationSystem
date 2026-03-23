@@ -8,12 +8,7 @@ pipeline {
 
     stages {
 
-        stage('Clone') {
-            steps {
-                echo '--- Cloning repository ---'
-                git 'https://github.com/shakyanaitik0-bot/OnlineReservationSystem.git'
-            }
-        }
+        // ❌ REMOVE CLONE STAGE (Jenkins already does it)
 
         stage('Build') {
             steps {
@@ -28,8 +23,6 @@ pipeline {
                 sh '/usr/share/maven/bin/mvn test'
             }
         }
-
-        // ❌ SonarQube REMOVED COMPLETELY
 
         stage('Docker Build') {
             steps {
