@@ -2,14 +2,17 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class AppTest {
+
     @Test
     public void testAppExists() {
-        assertTrue("App class should exist", true);
+        assertTrue(true);
     }
 
     @Test
-    public void testBookingIdCounter() {
-        OnlineReservationSystemGUI.Booking.idCounter = 1000;
-        assertEquals(1000, OnlineReservationSystemGUI.Booking.idCounter);
+    public void testTrainCreation() {
+        OnlineReservationSystemGUI.Train t =
+            new OnlineReservationSystemGUI.Train(1, "Test", "A", "B", 100);
+
+        assertEquals(100, t.availableSeats);
     }
 }
